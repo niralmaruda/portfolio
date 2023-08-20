@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface IObj {
   ch: string;
@@ -23,6 +23,15 @@ const Charactors: IObj[][] = [
 ];
 
 function Calculator() {
+  const [input, setInput] = useState('');
+  const handleClick = (col: string) => {
+    if (col === 'C') {
+      setInput('');
+      return;
+    }
+    setInput(input + col);
+    return;
+  };
   return (
     <>
       <section className="bg-gray-900 m-3 rounded-lg overflow-hidden">
@@ -32,7 +41,10 @@ function Calculator() {
         <hr></hr>
         <div className="my-10">
           <div className="grid grid-cols-1 m-5">
-            <input className="rounded-sm bg-gray-700 text-teal-400 mx-20 scale-y-150 p-1 my-2"></input>
+            <input
+              value={input}
+              className="rounded-sm bg-gray-700 text-teal-400 mx-20 scale-y-150 p-1 my-2"
+            ></input>
           </div>
 
           {Charactors.map((row) => (
@@ -47,6 +59,7 @@ function Calculator() {
                     (col.num === 0 &&
                       'bg-gray-300 hover:bg-gray-400 hover:shadow-gray-300')
                   } rounded-md hover:cursor-pointer p-2 font-medium hover:shadow-inner `}
+                  onClick={() => handleClick(col.ch)}
                 >
                   {col.ch}
                 </button>

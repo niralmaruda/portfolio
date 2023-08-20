@@ -34,7 +34,7 @@ function ToDo() {
           <input
             value={val}
             onChange={(e) => setVal(e.target.value)}
-            className="rounded-l-md w-80 bg-gray-700 text-teal-400 scale-y-150 p-1 my-2"
+            className="rounded-l-md w-80 bg-gray-700 text-teal-400 text-xl p-1"
           ></input>
           <button
             onClick={handleClick}
